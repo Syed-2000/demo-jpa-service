@@ -6,6 +6,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.time.ZonedDateTime;
 import java.util.HashMap;
@@ -30,5 +31,12 @@ public class GlobalExceptionHandler {
         response.put("path", "/api/user"); // Optional: you can extract this dynamically if needed
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)  // Return 400 Bad Request
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+        // You can customize the error message here, or use the one from the exception
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }
