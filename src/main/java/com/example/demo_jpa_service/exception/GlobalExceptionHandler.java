@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
         response.put("status", HttpStatus.BAD_REQUEST.value());
         response.put("error", "Validation Failed");
         response.put("messages", errors);
-        response.put("path", "/api/user"); // Optional: you can extract this dynamically if needed
+        response.put("path", "/api/user");
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
