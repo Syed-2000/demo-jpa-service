@@ -36,7 +36,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)  // Return 400 Bad Request
     public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
-        // You can customize the error message here, or use the one from the exception
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }
