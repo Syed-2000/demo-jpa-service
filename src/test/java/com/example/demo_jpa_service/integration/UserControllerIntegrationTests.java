@@ -93,6 +93,6 @@ public class UserControllerIntegrationTests {
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/api/user/" + savedUser.id()))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isInternalServerError());
     }
 }
